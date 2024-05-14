@@ -5,6 +5,7 @@ from uuid import uuid4
 
 app = FastAPI()
 
+
 class Car(BaseModel):
     id: Optional[str] = None
     fabricante: str
@@ -12,32 +13,37 @@ class Car(BaseModel):
     valor: float
     ano: int
 
+
 cars = []
 
-@app.get('/cars')
+
+@app.get("/cars")
 def show_all_cars():
     if len(cars) == 0:
-        return{'Garagem vazia!'}
+        return {"Garagem vazia!"}
     else:
         return cars
 
-@app.post('/cars')
+
+@app.post("/cars")
 def add_car(car: Car):
     car.id = uuid4()
     cars.append(car)
-    return{f'O carro {car.modelo} adicionado com sucesso!'}
+    return {f"O carro {car.modelo} adicionado com sucesso!"}
 
-@app.get('/cars/{car_id}')
+
+@app.get("/cars/{car_id}")
 def show_car_by_id(car_id: str):
     for car in cars:
         if car_id == car_id:
             return car
         return {"Carro não encontrado!"}
 
-@app.delete('/cars/{car_id}')
+
+@app.delete("/cars/{car_id}")
 def delete_by_id(car_id: str):
     position = -1
-    
+
     for index, car in enumerate(cars):
         if car_id == car_id:
             position = index
