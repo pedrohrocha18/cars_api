@@ -3,7 +3,6 @@ from pydantic import BaseModel
 from typing import Optional
 from uuid import uuid4
 
-
 app = FastAPI()
 
 class Car(BaseModel):
@@ -20,7 +19,7 @@ def show_all_cars():
     if len(cars) == 0:
         return{'Garagem vazia!'}
     else:
-        return{"Carros Disponíveis:":cars }
+        return cars
 
 @app.post('/cars')
 def add_car(car: Car):
@@ -33,7 +32,7 @@ def show_car_by_id(car_id: str):
     for car in cars:
         if car_id == car_id:
             return car
-        return{"Carro não encontrado!"}
+        return {"Carro não encontrado!"}
 
 @app.delete('/cars/{car_id}')
 def delete_by_id(car_id: str):
@@ -45,6 +44,6 @@ def delete_by_id(car_id: str):
             break
     if position != -1:
         cars.pop(position)
-        return{"Deletado com sucesso!"}
+        return {"Deletado com sucesso!"}
     else:
-        return{"Carro não encontrado!"}
+        return {"Carro não encontrado!"}
