@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Web Car</title>
-</head>
-
-<body style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+  </head>
+  <body
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    "
+  >
     <h1>Web Car - Cadasto de Veículos</h1>
     <h2>Cadastre um novo veículo</h2>
-    <form id="form_car" style="display: flex; flex-direction: column; gap: 5px;">
-        <input type="text" name="fabricante" id="fabricante" placeholder="Fabricante">
-        <input type="text" name="modelo" id="modelo" placeholder="Modelo">
-        <input type="text" name="ano" id="ano" placeholder="Ano">
-        <input type="text" name="valor" id="valor" placeholder="Valor">
-        <input type="submit" value="Cadastrar">
+    <form id="form_car" style="display: flex; flex-direction: column; gap: 5px">
+      <input
+        type="text"
+        name="fabricante"
+        id="fabricante"
+        placeholder="Fabricante"
+      />
+      <input
+        type="text"
+        name="modelo"
+        id="modelo"
+        placeholder="Modelo"
+        required
+      />
+      <input type="text" name="ano" id="ano" placeholder="Ano" required />
+      <input type="text" name="valor" id="valor" placeholder="Valor" required />
+      <input type="submit" value="Cadastrar" />
     </form>
-</body>
-
+    <h2>Carros cadastrados</h2>
+    <ul id="list_car"></ul>
+  </body>
+  <script src="script.js"></script>
 </html>
